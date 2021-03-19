@@ -42,6 +42,7 @@ type
     Rectangle3: TRectangle;
     Image2: TImage;
     procedure Label2Click(Sender: TObject);
+    procedure rect_btn_signupClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +58,12 @@ implementation
 
 uses unitSignIn;
 
+procedure EfeitoClick(rect : TRectangle);
+begin
+  rect.Opacity := 0.8;
+  rect.AnimateFloat('Opacity',1,0.3, TAnimationType.InOut,TInterpolationType.Circular);
+end;
+
 procedure TfrmSignUp.Label2Click(Sender: TObject);
 begin
  if  not Assigned(frmSignIn) then Application.CreateForm(TfrmSignIn,frmSignIn);
@@ -64,6 +71,11 @@ begin
   frmSignIn.Show;
   frmSignUp.Close;
 
+end;
+
+procedure TfrmSignUp.rect_btn_signupClick(Sender: TObject);
+begin
+  EfeitoClick(TRectangle(Sender));
 end;
 
 end.
